@@ -1,0 +1,43 @@
+[
+    {
+     "category": "Men",
+     "url": "/men"   
+    },
+    {
+     "category": "Women",
+     "url": "/women"   
+    },
+    {
+     "category": "kids",
+     "url": "/kids"   
+    },
+    {
+     "category": "Home",
+     "url": "/"   
+    },
+    {
+     "category": "Beauty",
+     "url": "/beauty"
+    },
+    {
+     "category": "Genz",
+     "url": "/genz"
+    },
+    {
+     "category": "Studio",
+     "url": "/studio",
+     "sup":"New"   
+    },
+    [
+        {
+            "title": "Profile"
+        },
+        {
+            "title": "Wishlist"
+        },
+        {
+            "title": "Bag"
+        }
+    ]
+
+]

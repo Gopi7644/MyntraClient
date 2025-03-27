@@ -1,33 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
+import Layout from './AppLayout/Layout'
+import ErrorPage from './pages/ErrorPage'
+import Home from './pages/Home'
+import Men from './pages/Men'
+import Women from './pages/Women'
+import Kids from './pages/Kids'
+import Beauty from './pages/Beauty'
+import Genz from './pages/Genz'
+import Studio from './pages/Studio'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const Route = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      errorElement:<ErrorPage />,
+      children:[
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/men',
+          element: <Men />,
+        },
+        {
+          path: '/women',
+          element: <Women />,
+        },
+        {
+          path: '/kids',
+          element: <Kids />,
+        },
+        {
+          path: '/home',
+          element: <Home />,
+        },
+        {
+          path: '/beauty',
+          element: <Beauty />,
+        },
+        {
+          path: '/genz',
+          element: <Genz />,
+        },
+        {
+          path: '/studio',
+          element: <Studio />,
+        },
+      ]
+    }
+  ])
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <RouterProvider router={Route} />
     </>
   )
 }

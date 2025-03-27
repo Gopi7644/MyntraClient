@@ -1,8 +1,11 @@
 import React from 'react'
+import Carousel from '../components/Scroller'
 
 const Home = () => {
   return (
-    <div className='text-center my-30'>This is home page</div>
+    <>
+      <Carousel />
+    </>
   )
 }
 

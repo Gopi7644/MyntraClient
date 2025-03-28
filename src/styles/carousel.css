@@ -1,0 +1,18 @@
+/* .custom-carousel .slick-dots {
+  margin-bottom: 10px; 
+} */
+
+.custom-carousel .slick-dots li {
+  margin: 0 0px; /* Adjust spacing between individual dots */
+}
+
+.custom-carousel .slick-dots li button:before {
+  font-size: 8px; /* डॉट्स का साइज बड़ा करें */
+  color: gray; /* इनएक्टिव डॉट का कलर */
+  opacity: 0.5; /* डॉट्स हल्के ग्रे दिखेंगे */
+}
+.custom-carousel .slick-dots li.slick-active button:before {
+  color: rgba(31, 30, 30, 0.552); /* एक्टिव डॉट का कलर */
+  opacity: 1;
+  font-size: 8px; /* एक्टिव डॉट थोड़ा बड़ा दिखे */
+}

@@ -23,7 +23,7 @@ const Carousel = () => {
   
 
   return (
-    <section className="w-full overflow-x-hidden h-[600px] mt-30 custom-carousel">
+    <section className="w-full overflow-x-hidden h-[600px] mt-3 custom-carousel">
       <Slider {...settings}>
         {data.map((img, index) => (
           <div key={index}>
@@ -31,7 +31,7 @@ const Carousel = () => {
           </div>
         ))}
       </Slider>
-      <h4 className="m-[70px_0_10px_30px] w-full text-[28px] uppercase text-[#3d4152] font-semibold">Medal Worthy Brands To Bag</h4>
+      <h4 className="m-[50px_0_10px_40px] w-full text-[28px] uppercase text-[#3d4152] font-semibold">Medal Worthy Brands To Bag</h4>
     </section>
   );
 };

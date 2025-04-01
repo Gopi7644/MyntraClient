@@ -1,43 +1,66 @@
-[
+{
+  "navData": [
     {
-     "category": "Men",
-     "url": "/men"   
+      "category": "Men",
+      "url": "/men"
     },
     {
-     "category": "Women",
-     "url": "/women"   
+      "category": "Women",
+      "url": "/women"
     },
     {
-     "category": "kids",
-     "url": "/kids"   
+      "category": "kids",
+      "url": "/kids"
     },
     {
-     "category": "Home",
-     "url": "/"   
+      "category": "Home",
+      "url": "/"
     },
     {
-     "category": "Beauty",
-     "url": "/beauty"
+      "category": "Beauty",
+      "url": "/beauty"
     },
     {
-     "category": "Genz",
-     "url": "/genz"
+      "category": "Genz",
+      "url": "/genz"
     },
     {
-     "category": "Studio",
-     "url": "/studio",
-     "sup":"New"   
-    },
-    [
-        {
-            "title": "Profile"
-        },
-        {
-            "title": "Wishlist"
-        },
-        {
-            "title": "Bag"
-        }
+      "category": "Studio",
+      "url": "/studio",
+      "sup": "New"
+    }
+  ],
+  "menus": {
+    "MEN": [
+      {
+        "category": "Topwear",
+        "items": ["T-Shirts", "Casual Shirts", "Jackets"]
+      },
+      { "category": "Bottomwear", "items": ["Jeans", "Trousers", "Shorts"] },
+      {
+        "category": "Footwear",
+        "items": ["Sneakers", "Sports Shoes", "Flip Flops"]
+      }
+    ],
+    "WOMEN": [
+      { "category": "Ethnic Wear", "items": ["Sarees", "Kurtis", "Lehengas"] },
+      { "category": "Western Wear", "items": ["Tops", "Dresses", "Jeans"] }
+    ],
+    "KIDS": [
+      { "category": "Boys", "items": ["Shirts", "Jeans", "Shoes"] },
+      { "category": "Girls", "items": ["Dresses", "Tops", "Shoes"] }
+    ],
+    "HOME": [
+      { "category": "Decor", "items": ["Curtains", "Lamps", "Furniture"] }
+    ],
+    "BEAUTY": [
+      { "category": "Makeup", "items": ["Lipstick", "Foundation", "Perfume"] }
+    ],
+    "GENZ": [
+      { "category": "Trendy", "items": ["Oversized Tees", "Chunky Sneakers"] }
+    ],
+    "STUDIO": [
+      { "category": "Collections", "items": ["Exclusive Drops", "Trending"] }
     ]
-
-]
+  }
+}

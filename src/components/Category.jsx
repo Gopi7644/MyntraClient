@@ -1,7 +1,8 @@
 import React from 'react'
 import carousel from '../data/carousel.json'
-console.log(carousel.hero[0].headingImage)
+// console.log(carousel.hero[0].headingImage)
 const headingImage = carousel.hero[0].headingImage
+const footerImage = carousel.hero[0].footerImage
 const cat = carousel.category
 const Category = () => {
   return (
@@ -10,7 +11,7 @@ const Category = () => {
         <ul className='grid grid-cols-6 items-center justify-center p-[0_100px]'>
             {
              cat.map((item, i) => {
-                console.log(item)
+                // console.log(item)
                 return (
                     <li key={i}>
                         <img src={item.image_url} alt="" />
@@ -19,6 +20,7 @@ const Category = () => {
              })   
             }
         </ul>
+        <img src={footerImage} alt="heading Image" className='p-[0_100px]'/>
     </section>
   )
 }

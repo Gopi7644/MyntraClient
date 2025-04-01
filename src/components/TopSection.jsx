@@ -1,6 +1,6 @@
 import React from 'react'
 import carousel from '../data/carousel.json'
-console.log(carousel)
+// console.log(carousel)
 const abc = carousel.hero[0]
 
 const TopSection = () => {

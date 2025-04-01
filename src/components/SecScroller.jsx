@@ -6,8 +6,8 @@ import Slider from "react-slick";
 const SecScroller = () => {
   const spinImg = carousel.secondCaraousel || [];
   const xyz = carousel.images || [];
-  console.log(xyz)
-  console.log(spinImg)
+  // console.log(xyz)
+  // console.log(spinImg)
   const abc = carousel.hero[0].imageOne
 
 

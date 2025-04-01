@@ -9,6 +9,9 @@ import Kids from './pages/Kids'
 import Beauty from './pages/Beauty'
 import Genz from './pages/Genz'
 import Studio from './pages/Studio'
+import Profile from './pages/Profile'
+import Wishlist from './pages/Wishlist'
+import Bag from './pages/Bag'
 
 function App() {
 
@@ -49,6 +52,18 @@ function App() {
         {
           path: '/studio',
           element: <Studio />,
+        },
+        {
+          path: '/profile',
+          element: <Profile />,
+        },
+        {
+          path: '/wishlist',
+          element: <Wishlist />,
+        },
+        {
+          path: '/bag',
+          element: <Bag />,
         },
       ]
     }

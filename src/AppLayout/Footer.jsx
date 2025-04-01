@@ -2,7 +2,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='text-center my-30'>This is footer page</div>
+    <footer className='w-[1435px] m-[30px_0_40px] mx-auto bg-[#FAFBFC] text-center'>
+      <p>This is footer page</p>
+    </footer>
   )
 }
 

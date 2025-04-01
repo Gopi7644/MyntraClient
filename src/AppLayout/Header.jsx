@@ -8,8 +8,8 @@ import { NavLink } from 'react-router-dom'
 import NavData from '../data/NavData.json'
 // console.log(NavData.menus)
 const mapDAta = NavData.navData
-// const key = Object.keys(NavData.menus)
-// console.log(`keys: ${key} length: ${key.length}`)
+const key = Object.keys(NavData.menus)
+// console.log(`keys: ${key[0].toLowerCase()} length: ${key.length}`)
 
 
 const Header = () => {
@@ -48,9 +48,9 @@ const Header = () => {
                   src='https://images.indianexpress.com/2021/01/myntra.png' alt='Myntra logo' />
               </NavLink>
               {
-                mapDAta.map((item, index) => (
-                  <NavLink key={index} to={item.url} className='ml-6 uppercase'>
-                    <p>{item.category}<sup className='text-red-500 ml-1'>{item.sup}</sup></p>
+                Object.keys(NavData.menus).map((item, i) => (
+                  <NavLink key={i} to={`/${item.toLowerCase()}`} className='ml-6 uppercase'>
+                    <p>{item}<sup className='text-red-500 ml-1'>{NavData.menus[item][0].sup}</sup></p>
                   </NavLink>
                 ))
               }

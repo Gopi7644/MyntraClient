@@ -1,8 +1,9 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import NavData from '../data/NavData.json'
+import Navbar from '../components/Navbar'
 const key = Object.keys(NavData.menus)
-console.log(NavData.menus.STUDIO[0].sup)
+// console.log(NavData.menus.STUDIO[0].sup)
 // console.log(`keys: ${key} length: ${key.length}`)
 
 const TestPage = () => {
@@ -41,6 +42,7 @@ const TestPage = () => {
           ))}
         </ul>
       </nav>
+      <Navbar />
       <button
         className='bg-[#3d4152] text-white px-4 py-2 rounded-md mb-5'
         onClick={handleTestPage}>Go Back</button>

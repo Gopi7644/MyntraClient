@@ -4,3 +4,20 @@
     box-shadow: 0 4px 12px 0 rgba(0,0,0,.05);
     
 }
+
+.vertical-banner {
+    background-color: #4A4F5A; /* डार्क ग्रे बैकग्राउंड */
+    color: white; /* टेक्स्ट का रंग */
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* सारे अक्षर कैपिटल में */
+    writing-mode: vertical-rl; /* टेक्स्ट को ऊपर से नीचे करना */
+    text-orientation: mixed; /* अक्षरों को सीधा रखना */
+    padding: 5px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    transform: rotate(180deg)
+}

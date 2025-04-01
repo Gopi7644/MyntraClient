@@ -12,6 +12,7 @@ import Studio from './pages/Studio'
 import Profile from './pages/Profile'
 import Wishlist from './pages/Wishlist'
 import Bag from './pages/Bag'
+import TestPage from './pages/TestPage'
 
 function App() {
 
@@ -64,6 +65,10 @@ function App() {
         {
           path: '/bag',
           element: <Bag />,
+        },
+        {
+          path: '/test',
+          element: <TestPage />,
         },
       ]
     }

@@ -60,7 +60,11 @@
       { "category": "Trendy", "items": ["Oversized Tees", "Chunky Sneakers"] }
     ],
     "STUDIO": [
-      { "category": "Collections", "items": ["Exclusive Drops", "Trending"] }
+      {
+        "category": "Collections",
+        "sup": "new",
+        "items": ["Exclusive Drops", "Trending"]
+      }
     ]
   }
 }

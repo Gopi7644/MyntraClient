@@ -2,7 +2,7 @@ import { IoIosSearch } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
-import React from 'react'
+import React, { useState } from 'react'
 import '../index.css'
 import { NavLink } from 'react-router-dom'
 import NavData from '../data/NavData.json'
@@ -10,9 +10,10 @@ import NavData from '../data/NavData.json'
 const mapDAta = NavData.navData
 const key = Object.keys(NavData.menus)
 // console.log(`keys: ${key[0].toLowerCase()} length: ${key.length}`)
-
+console.log(key)
 
 const Header = () => {
+  const [activeMenu, setActiveMenu] = useState(null);
 
   const links = [
     {
@@ -41,20 +42,46 @@ const Header = () => {
         <nav className='flex justify-between items-center h-full'>
           <div className='flex items-center justify-between gap-10 text-black'>
 
-            <div className='flex text-[13px] items-center font-bold'>
+            <ul className='flex text-[13px] items-center font-bold'>
               <NavLink to={'/'}>
                 <img
                   className='w-25 mx-8'
                   src='https://images.indianexpress.com/2021/01/myntra.png' alt='Myntra logo' />
               </NavLink>
               {
-                Object.keys(NavData.menus).map((item, i) => (
-                  <NavLink key={i} to={`/${item.toLowerCase()}`} className='ml-6 uppercase'>
-                    <p>{item}<sup className='text-red-500 ml-1'>{NavData.menus[item][0].sup}</sup></p>
-                  </NavLink>
-                ))
+                key.map((item, i) => {
+                  return (
+                    <li
+                      key={i}
+                      onMouseEnter={() => setActiveMenu(item)}
+                      onMouseLeave={() => setActiveMenu(null)}
+                      className='ml-6 uppercase relative group cursor-pointer flex items-center justify-center'>
+                      <NavLink to={`/${item.toLowerCase()}`}>
+                        <p>{item}<sup className='text-red-500 ml-1'>{NavData.menus[item][0].sup}</sup></p>
+                      </NavLink>
+                      {activeMenu === item && (
+                        <div className="absolute top-5 bg-white shadow-lg p-4 w-64 grid grid-cols-1  gap-2">
+                          {NavData.menus[item].map((subItem, index) => (
+                            <div key={index}>
+                              <h3 className="text-red-500 font-semibold">{subItem.category}</h3>
+                              <ul className="text-sm">
+                                {subItem.items.map((menuItem, i) => (
+                                  <li key={i} className="hover:text-gray-700 cursor-pointer">
+                                    <NavLink to={`/${item.toLowerCase()}/${menuItem.toLowerCase().replace(/\s+/g, "-")}`}>
+                                      {menuItem}
+                                    </NavLink>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </li>
+                  )
+                })
               }
-            </div>
+            </ul>
 
             <div className='relative'>
               <input

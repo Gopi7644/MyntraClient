@@ -1,16 +1,12 @@
 import React from "react";
-import carousel from "../data/carousel.json";
 import "../styles/carousel.css";
 import Slider from "react-slick";
-
+import NavData from "../data/NavData.json";
 const SecScroller = () => {
-  const spinImg = carousel.secondCaraousel || [];
-  const xyz = carousel.images || [];
-  // console.log(xyz)
-  // console.log(spinImg)
-  const abc = carousel.hero[0].imageOne
-
-
+  const xyz = NavData.carousel.images || [];
+  const abc = NavData.carousel.hero[0].imageOne
+  // console.log(NavData.carousel.hero[0].imageOne)
+  // console.log(abc)
   const settings = {
     dots: true,
     infinite: true,
@@ -28,8 +24,6 @@ const SecScroller = () => {
       <div className="w-full flex justify-center items-center mb-5">
         <img src={abc} alt="myntra photo" />
       </div>   
-
-
 
       <Slider {...settings}>
         {xyz.length > 0 &&
@@ -66,7 +60,7 @@ const SecScroller = () => {
             </div>
           ))}
       </Slider> */}
-      <h4 className="m-[70px_0_10px_30px] w-full text-[28px] uppercase text-[#3d4152] font-semibold">Grand Global Brands</h4>
+      <h4 className="m-[20px_0_10px_30px] w-full text-[28px] uppercase text-[#3d4152] font-semibold">Grand Global Brands</h4>
     </section>
   );
 };

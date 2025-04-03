@@ -1,8 +1,8 @@
 import React from 'react'
-import carousel from '../data/carousel.json'
 import { useNavigate } from 'react-router-dom'
-// console.log(carousel)
-const abc = carousel.hero[0]
+import NavData from '../data/NavData.json'
+const abc = NavData.carousel.hero[0]
+// console.log(abc)
 
 const TopSection = () => {
   const navigate = useNavigate()

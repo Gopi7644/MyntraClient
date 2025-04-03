@@ -5,18 +5,13 @@ import { IoBagOutline } from "react-icons/io5";
 import React, { useEffect, useState } from 'react'
 import '../index.css'
 import { NavLink } from 'react-router-dom'
-import NavData from '../data/NavData.json'
 import axios from "axios";
-// console.log(NavData.menus)
-const key = Object.keys(NavData.menus)
-// console.log(`keys: ${key[0].toLowerCase()} length: ${key.length}`)
-// console.log(key)
-
 const Header = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [data, setData] = useState({})
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null)
+  
 
 
   const apiData = async () => {
@@ -36,6 +31,9 @@ const Header = () => {
 
   if (loading) return <h2 className="mt-30 text-center font-bold text-20">डेटा लोड हो रहा है...</h2>;
   if (error) return <h2 className="mt-30 text-center text-red-500">त्रुटि: {error}</h2>;
+  // console.log(data)
+  const key = Object.keys(data.menus)
+  // console.log(objectKey)
 
   const links = [
     {
@@ -63,8 +61,6 @@ const Header = () => {
       <header className='h-[80px] text-[#fff] fixed top-0  right-0 left-0 box-shadow w-full z-50 bg-[#fff] shadow'>
         <nav className='flex justify-between items-center h-full'>
           <div className='flex items-center justify-between gap-10 text-black'>
-            
-
             <ul className='flex text-[13px] items-center font-bold'>
               <NavLink to={'/'}>
                 <img
@@ -80,11 +76,11 @@ const Header = () => {
                       onMouseLeave={() => setActiveMenu(null)}
                       className='ml-6 uppercase relative group cursor-pointer flex items-center justify-center'>
                       <NavLink to={`/${item.toLowerCase()}`}>
-                        <p>{item}<sup className='text-red-500 ml-1'>{NavData.menus[item][0].sup}</sup></p>
+                        <p>{item}<sup className='text-red-500 ml-1'>{data.menus[item][0].sup}</sup></p>
                       </NavLink>
                       {activeMenu === item && (
                         <div className="absolute top-5 bg-white shadow-lg p-4 w-64 grid grid-cols-1  gap-2">
-                          {NavData.menus[item].map((subItem, index) => (
+                          {data.menus[item].map((subItem, index) => (
                             <div key={index}>
                               <h3 className="text-red-500 font-semibold">{subItem.category}</h3>
                               <ul className="text-sm">

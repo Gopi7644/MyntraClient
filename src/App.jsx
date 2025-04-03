@@ -15,6 +15,7 @@ import Bag from './pages/Bag'
 import TestPage from './pages/TestPage'
 import SubCategoryOne from './SubCategoryPages/SubCategoryOne'
 import Longin from './SubCategoryPages/Login'
+import MyComponent from './pages/Dummy'
 
 function App() {
 
@@ -70,7 +71,7 @@ function App() {
         },
         {
           path: '/test',
-          element: <TestPage />,
+          element: <MyComponent />,
         },
         {
           path: '/men/t-shirts',

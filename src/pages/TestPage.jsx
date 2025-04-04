@@ -10,7 +10,7 @@ const TestPage = () => {
   }
   return (
     <>
-      <div className='w-full p-[10px_20px] my-30'>
+      <div className='w-full p-[10px_20px] my-10'>
         <h1 className='text-center mt-30'>Welcome to test Page</h1>
         <MyComponent />
         <button

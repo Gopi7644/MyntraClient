@@ -6,11 +6,14 @@ const abc = NavData.carousel.hero[0]
 // console.log(abc)
 
 const TopSection = () => {
-  const {data, loading, error} = useContext(DataContext)
+  const navigate = useNavigate()
+
+  const {data, loading, error,} = useContext(DataContext)
   if(loading) return ;
   if(error) return ;
-  console.log(data)
-  const navigate = useNavigate()
+  // console.log(data)
+
+  
 
   const handleTestPage = () => {
     navigate('/test')

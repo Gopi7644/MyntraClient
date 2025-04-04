@@ -7,7 +7,7 @@ const Category = () => {
   const headingImage = data.carousel.hero[0].headingImage
   const footerImage = data.carousel.hero[0].footerImage
   const cat = data.carousel.category
-  console.log(data)
+  // console.log(data)
   return (
     <section className='w-1435px mt-[-120px]'>
       <img src={headingImage} alt="heading Image" className='p-[0_100px]' />

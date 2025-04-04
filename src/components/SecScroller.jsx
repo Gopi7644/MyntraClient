@@ -6,7 +6,7 @@ const SecScroller = () => {
   const {data, loading, error} = useContext(DataContext)
   if(loading) return ;
   if(error) return ;
-  console.log(data)
+  // console.log(data)
   const xyz = data.carousel.images || [];
   const abc = data.carousel.hero[0].imageOne
   // console.log(NavData.carousel.hero[0].imageOne)

@@ -15,7 +15,7 @@ import Bag from './pages/Bag'
 import TestPage from './pages/TestPage'
 import SubCategoryOne from './SubCategoryPages/SubCategoryOne'
 import Longin from './SubCategoryPages/Login'
-import MyComponent from './pages/MyComponent'
+import Feedback from './pages/Feedback'
 
 function App() {
 
@@ -72,7 +72,7 @@ function App() {
         {
           path: '/test',
           element: <TestPage />,
-          // element: <MyComponent />,
+
         },
         {
           path: '/men/t-shirts',
@@ -81,6 +81,10 @@ function App() {
         {
           path: '/login',
           element: <Longin />,
+        },
+        {
+          path: '/contact',
+          element: <Feedback />,
         },
       ]
     }

@@ -10,7 +10,7 @@ const Feedback = () => {
     const data = Object.fromEntries(formData.entries());
     setUserData(data);
     console.log('Feedback submitted:', data);
-    const res = await axios.post('http://localhost:8000/api/feedback', data)
+    const res = await axios.post('https://myntraserver-oskf.onrender.com/api/feedback', data)
     res.status === 200 && 
     alert('Feedback submitted successfully!'); // Check if the response status is 200 (OK) and display a success message
     setUserData({})

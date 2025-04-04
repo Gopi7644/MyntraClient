@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import NavData from '../data/NavData.json'
+import { DataContext } from '../Context/Context'
 const abc = NavData.carousel.hero[0]
 // console.log(abc)
 
 const TopSection = () => {
+  const {data, loading, error} = useContext(DataContext)
+  if(loading) return ;
+  if(error) return ;
+  console.log(data)
   const navigate = useNavigate()
 
   const handleTestPage = () => {

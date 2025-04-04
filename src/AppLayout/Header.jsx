@@ -2,33 +2,17 @@ import { IoIosSearch } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
-import React, { useEffect, useState } from 'react'
+import React, { useContext,} from 'react'
 import '../index.css'
 import { NavLink } from 'react-router-dom'
-import axios from "axios";
+import { DataContext } from "../Context/Context";
+
 const Header = () => {
-  const [activeMenu, setActiveMenu] = useState(null);
-  const [data, setData] = useState({})
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null)
 
-  const apiData = async () => {
-    try {
-      const data = await axios.get('http://localhost:8000/api/data')
-      setData(data.data)
-      setLoading(false)
-    } catch (error) {
-        console.log(error.message)
-        setError(error.message)
-        setLoading(false)
-    }
-  }
-  useEffect(() => {
-    apiData()
-  }, [])
+  const {data, setData, loading, setLoading, error, setError, activeMenu, setActiveMenu } = useContext(DataContext)
 
-  if (loading) return <h2 className="mt-30 text-center font-bold text-20">डेटा लोड हो रहा है...</h2>;
-  if (error) return <h2 className="mt-30 text-center text-red-500">त्रुटि: {error}</h2>;
+  if (loading) return <h2 className="mt-30 text-center font-bold text-20">Loading...</h2>;
+  if (error) return <h2 className="mt-30 text-center text-red-500">Error: {error}</h2>;
   // console.log(data)
   const key = Object.keys(data.menus)
   // console.log(objectKey)

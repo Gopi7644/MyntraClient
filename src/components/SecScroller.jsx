@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/carousel.css";
 import Slider from "react-slick";
-import NavData from "../data/NavData.json";
+import { DataContext } from "../Context/Context";
 const SecScroller = () => {
-  const xyz = NavData.carousel.images || [];
-  const abc = NavData.carousel.hero[0].imageOne
+  const {data, loading, error} = useContext(DataContext)
+  if(loading) return ;
+  if(error) return ;
+  console.log(data)
+  const xyz = data.carousel.images || [];
+  const abc = data.carousel.hero[0].imageOne
   // console.log(NavData.carousel.hero[0].imageOne)
   // console.log(abc)
   const settings = {
@@ -38,28 +42,6 @@ const SecScroller = () => {
           ))}
       </Slider>
 
-
-
-
-
-
-
-
-      {/* <Slider {...settings}>
-        {spinImg.length > 0 &&
-          spinImg.map((slide, index) => (
-            <div key={index} className="w-full   flex justify-center items-center">
-              {slide.urls?.map((imgUrl, imgIndex) => (
-                <img
-                  key={imgIndex}
-                  src={imgUrl}
-                  alt={`Slide ${index} - Image ${imgIndex}`}
-                  className="w-[308px] h-[405px] object-cover rounded-lg"
-                />
-              ))}
-            </div>
-          ))}
-      </Slider> */}
       <h4 className="m-[20px_0_10px_30px] w-full text-[28px] uppercase text-[#3d4152] font-semibold">Grand Global Brands</h4>
     </section>
   );

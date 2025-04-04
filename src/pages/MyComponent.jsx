@@ -5,7 +5,7 @@ const MyComponent = () => {
     const { data, setData } = useContext(DataContext);
 
     return (
-        <div className="">
+        <div>
             <h2>Data: {JSON.stringify(data)}</h2>
             <button onClick={() => setData({ name: "React Context" })}>
                 Update Data

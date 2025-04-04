@@ -4,6 +4,7 @@ import axios from "axios";
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
+    const [activeMenu, setActiveMenu] = useState(null);
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -12,7 +13,7 @@ export const DataProvider = ({ children }) => {
           const data = await axios.get('http://localhost:8000/api/data')
           setData(data.data)
           setLoading(false)
-          console.log(data.data)
+          // console.log(data.data)
         } catch (error) {
             console.log(error.message)
             setError(error.message)
@@ -24,7 +25,7 @@ export const DataProvider = ({ children }) => {
       }, [])
 
     return (
-        <DataContext.Provider value={{ data, setData, loading, setLoading, error, setError }}>
+        <DataContext.Provider value={{ data, setData, loading, setLoading, error, setError, activeMenu, setActiveMenu }}>
             {children}
         </DataContext.Provider>
     );

@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../styles/carousel.css'
-import NavData from "../data/NavData.json";
-const data = NavData.carousel.carousel || [];
-// console.log(data)
-
-
-
-
+import { DataContext } from "../Context/Context";
 const Carousel = () => {
+  const {data, error, loading} = useContext(DataContext)
+  if(loading) return ;
+  if(error) return;
+  const Data = data.carousel.carousel || [];
+  console.log(Data)
   const settings = {
     dots: true,
     infinite: true,
@@ -22,12 +21,11 @@ const Carousel = () => {
     arrows: true,
   };
 
-  
 
   return (
     <section className="w-full overflow-x-hidden h-[600px] mt-10 custom-carousel">
       <Slider {...settings}>
-        {data.map((img, index) => (
+        {Data.map((img, index) => (
           <div key={index}>
             <img src={img.image} alt={`Slide ${index}`}/>
           </div>

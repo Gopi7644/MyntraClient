@@ -3,6 +3,7 @@ import axios from "axios";
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
+  const [errors, setErrors] = useState({});
   const [userData, setUserData] = useState({})
   const [activeMenu, setActiveMenu] = useState(null);
   const [data, setData] = useState({});
@@ -26,8 +27,47 @@ export const DataProvider = ({ children }) => {
     apiData()
   }, [])
 
+  
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    setUserData(data);
+    
+    // http://localhost:8000/api/feedback
+    const res = await axios.post('https://myntraserver-oskf.onrender.com/api/feedback', data);
+    res.status === 200 && alert('Feedback submitted successfully!');
+    setUserData({});
+    e.target.reset();    
+  };
+
+  const validateForm = (formData) => {
+    const newErrors = {};
+    if (!formData.get('name')) newErrors.name = 'Fill your name.';
+    if (!formData.get('email')) newErrors.email = 'Fill your email.';
+    if (!formData.get('phone')) newErrors.phone = 'Fill your phone.';
+    if (!formData.get('location')) newErrors.location = 'Fill your location.';
+    if (!formData.get('feedback')) newErrors.feedback = 'Fill your message.';
+    return newErrors;
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const validationErrors = validateForm(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      setErrors({});
+      handleSubmit(e); // Call the context's handleSubmit function
+    }
+  };
+  
+
   return (
-    <DataContext.Provider value={{ data, setData, loading, setLoading, error, setError, activeMenu, setActiveMenu, userData, setUserData }}>
+    <DataContext.Provider value={{ data, setData, loading, setLoading, error, setError, activeMenu, setActiveMenu, userData, setUserData, handleSubmit, handleFormSubmit, errors, setErrors }}>
       {children}
     </DataContext.Provider>
   );

@@ -11,7 +11,8 @@ export const DataProvider = ({ children }) => {
   const apiData = async () => {
     try {
       // https://myntraserver-oskf.onrender.com/api/data
-      const data = await axios.get("http://localhost:8000/api/data");
+      // http://localhost:8000/api/data
+      const data = await axios.get("https://myntraserver-oskf.onrender.com/api/data");
       setData(data.data)
       setLoading(false)
       // console.log(data.data)

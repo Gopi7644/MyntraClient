@@ -10,7 +10,8 @@ const Feedback = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     setUserData(data);
-    const res = await axios.post('http://localhost:8000/api/feedback', data);
+    // http://localhost:8000/api/feedback
+    const res = await axios.post('https://myntraserver-oskf.onrender.com/api/feedback', data);
     res.status === 200 && alert('Feedback submitted successfully!');
     setUserData({});
     e.target.reset();

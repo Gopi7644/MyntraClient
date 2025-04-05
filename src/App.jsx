@@ -14,9 +14,10 @@ import Wishlist from './pages/Wishlist'
 import Bag from './pages/Bag'
 import TestPage from './pages/TestPage'
 import SubCategoryOne from './SubCategoryPages/SubCategoryOne'
-import Longin from './SubCategoryPages/Login'
 import Feedback from './pages/Feedback'
 import UserDashBoard from './components/userDashBoard'
+import Login from './SubCategoryPages/Login'
+
 
 function App() {
 
@@ -81,7 +82,7 @@ function App() {
         },
         {
           path: '/login',
-          element: <Longin />,
+          element: <Login />,
         },
         {
           path: '/contact',

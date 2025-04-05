@@ -1,32 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, } from 'react';
 import { DataContext } from '../Context/Context';
 
 const Feedback = () => {
-  // const [errors, setErrors] = useState({});
+  
   const { handleSubmit, errors, setErrors, handleFormSubmit } = useContext(DataContext);
 
-  // const validateForm = (formData) => {
-  //   const newErrors = {};
-  //   if (!formData.get('name')) newErrors.name = 'Please fill your name.';
-  //   if (!formData.get('email')) newErrors.email = 'Please fill your email.';
-  //   if (!formData.get('phone')) newErrors.phone = 'Please fill your phone.';
-  //   if (!formData.get('location')) newErrors.location = 'Please fill your location.';
-  //   if (!formData.get('feedback')) newErrors.feedback = 'Please fill your message.';
-  //   return newErrors;
-  // };
-
-  // const handleFormSubmit = (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.target);
-  //   const validationErrors = validateForm(formData);
-
-  //   if (Object.keys(validationErrors).length > 0) {
-  //     setErrors(validationErrors);
-  //   } else {
-  //     setErrors({});
-  //     handleSubmit(e); // Call the context's handleSubmit function
-  //   }
-  // };
+  
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#f7f3ec] px-4 pt-24 pb-16">

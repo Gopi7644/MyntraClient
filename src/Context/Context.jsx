@@ -55,6 +55,7 @@ export const DataProvider = ({ children }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    
     const validationErrors = validateForm(formData);
 
     if (Object.keys(validationErrors).length > 0) {

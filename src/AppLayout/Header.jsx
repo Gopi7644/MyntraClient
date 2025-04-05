@@ -12,7 +12,8 @@ const links = [
     id: "a",
     icon: <FaRegUser />,
     name: "Profile",
-    url: "/profile",
+    url: "/login",
+    submenu: true,
     submenu: [
       { name: "My Account", url: "/profile/account" },
       { name: "Orders", url: "/profile/orders" },

@@ -15,7 +15,7 @@ import Bag from './pages/Bag'
 import TestPage from './pages/TestPage'
 import SubCategoryOne from './SubCategoryPages/SubCategoryOne'
 import Feedback from './pages/Feedback'
-import UserDashBoard from './components/userDashBoard'
+import UserDashBoard from './components/UserDashBoard'
 import Login from './SubCategoryPages/Login'
 
 

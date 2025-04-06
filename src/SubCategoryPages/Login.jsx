@@ -9,27 +9,54 @@ const Login = () => {
   const [step, setStep] = useState(1); // 1: phone/email, 2: OTP
   const [message, setMessage] = useState("");
 
+  // const handleFormSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.target);
+  //   const data = Object.fromEntries(formData.entries());
+  //   setPhoneOrEmail(data.phoneOrEmail);
+
+  //   try {
+  //     const res = await axios.post("https://myntraserver-oskf.onrender.com/api/sendPhoneEmail-otp", {
+  //       phoneOrEmail: data.phoneOrEmail,
+  //     });
+  //     setMessage(res.data.message);
+  //     setStep(2); // Move to OTP input step
+  //   } catch (error) {
+  //     setMessage(error.response?.data?.error || "Something went wrong. Please try again.");
+  //   }
+  // };
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     setPhoneOrEmail(data.phoneOrEmail);
+    const devMode = true; // ✅ Only true during testing
+    const isPhone = /^\d{10}$/.test(data.phoneOrEmail); // ✅ check if it's phone
 
     try {
-      const res = await axios.post("https://myntraserver-oskf.onrender.com/api/send-otp", {
+      const res = await axios.post("https://myntraserver-oskf.onrender.com/api/sendPhoneEmail-otp", {
         phoneOrEmail: data.phoneOrEmail,
       });
       setMessage(res.data.message);
-      setStep(2); // Move to OTP input step
+
+      // ✅ dev mode logic only for phone
+      if (devMode && isPhone && res.data.otp) {
+        setOtp(res.data.otp); // autofill for test
+        alert(`📱 Test OTP (Mobile): ${res.data.otp}`);
+      }
+
+      setStep(2);
     } catch (error) {
       setMessage(error.response?.data?.error || "Something went wrong. Please try again.");
     }
+
   };
+
 
   const handleVerifyOTP = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://myntraserver-oskf.onrender.com/api/verify-otp", {
+      const res = await axios.post("https://myntraserver-oskf.onrender.com/api/verifyPhoneEmail-otp", {
         phoneOrEmail,
         otp,
       });
@@ -43,7 +70,7 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <div className="w-full max-w-md">
-
+        
         {/* Offer Banner */}
         <div className="bg-pink-100 p-4 rounded-t-lg flex items-center justify-between">
           <div>
@@ -86,7 +113,7 @@ const Login = () => {
                 <input
                   type="text"
                   name="otp"
-                  value={otp || ""} // ensure it's always a string
+                  value={otp}
                   onChange={(e) => setOtp(e.target.value)}
                   placeholder="Enter OTP"
                   required

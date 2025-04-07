@@ -23,7 +23,7 @@ const SecScroller = () => {
   };
 
   return (
-    <section className="w-[1230px] mx-auto overflow-x-hidden  custom-carousel">
+    <section className="w-[300px] md:w-[1230px] mt-30 mx-auto overflow-x-hidden  custom-carousel">
 
       <div className="w-full flex justify-center items-center mb-5">
         <img src={abc} alt="myntra photo" />
@@ -36,7 +36,7 @@ const SecScroller = () => {
               <img
                   src={slide.image_url}
                   alt={`image`}
-                  className="w-[308px] h-[405px] object-cover rounded-lg"
+                  className="w-[200px] md:w-[308px] h-[200px] md:h-[405px] object-cover rounded-lg"
                 />
             </div>
           ))}

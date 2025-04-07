@@ -20,7 +20,7 @@ const TopSection = () => {
   }
 
   return (
-    <section className='w-full mt-30 p-[10px_100px_0]'>
+    <section className='hidden md:block  w-full mt-30 p-[10px_100px_0]'>
 
       <button
         className='vertical-banner fixed z-10 top-30 right-0 bg-[#3d4152] text-white px-4 py-2'

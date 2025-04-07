@@ -13,7 +13,7 @@ const links = [
     icon: <FaRegUser />,
     name: "Profile",
     url: "/login",
-    // submenu: true,
+    submenu: true,
     submenu: [
       { name: "My Account", url: "/profile/account" },
       { name: "Orders", url: "/profile/orders" },
@@ -37,6 +37,8 @@ const links = [
 const Header = () => {
   const { data, setData, loading, setLoading, error, setError, activeMenu, setActiveMenu } = useContext(DataContext)
   const [activeLink, setActiveLink] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
 
   if (loading) return <h2 className="mt-30 text-center font-bold text-20">Loading...</h2>;
   if (error) return <h2 className="mt-30 text-center text-red-500">Error: {error}</h2>;
@@ -47,67 +49,105 @@ const Header = () => {
 
   return (
     <>
-      <header className='h-[80px] text-[#fff] fixed top-0  right-0 left-0 box-shadow w-full z-50 bg-[#fff] shadow'>
+      <header className='h-[80px] text-[#fff] fixed top-0  right-0 left-0 box-shadow w-[500px] border md:w-full z-50 bg-[#fff] shadow'>
         <nav className='flex justify-between items-center h-full'>
-          <div className='flex items-center justify-between gap-10 text-black'>
-            <ul className='flex text-[13px] items-center font-bold'>
-              <NavLink to={'/'}>
+          <div className='flex items-center justify-between gap-10  text-black'>
+            <div className='flex items-center justify-between'>
+              {/* Hamburger for mobile */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+                </svg>
+              </button>
+              {/* Logo for mobile */}
+              <NavLink to={'/'} className='md:hidden'>
                 <img
-                  className='w-25 mx-8'
+                  className='w-25 mx-2'
                   src='https://images.indianexpress.com/2021/01/myntra.png' alt='Myntra logo' />
               </NavLink>
-              {
-                key.map((item, i) => {
-                  // console.log(key)
-                  return (
-                    <li
-                      key={i}
-                      onMouseEnter={() => setActiveMenu(item)}
-                      onMouseLeave={() => setActiveMenu(null)}
-                      className='ml-6 uppercase relative group cursor-pointer flex items-center justify-center'>
-                      <NavLink to={`/${item.toLowerCase()}`}>
-                        <p>{item}<sup className='text-red-500 ml-1'>{data.menus[item][0].sup}</sup></p>
-                        {/* {console.log(item)}
-                        {console.log(data.menus[item][0].sup)} */}
-                      </NavLink>
-                      {activeMenu === item && (
-                        <div className="absolute top-5 bg-white shadow-lg p-4 w-64 grid grid-cols-1  gap-2">
-                          {data.menus[item].map((subItem, index) => {
-                            // console.log(subItem)
-                            return (
-                              <div key={index}>
-                                <h3 className="text-red-500 font-semibold">{subItem.category}</h3>
-                                <ul className="text-sm">
-                                  {subItem.items.map((menuItem, i) => (
-                                    <li key={i} className="hover:text-gray-700 cursor-pointer">
-                                      <NavLink to={`/${item.toLowerCase()}/${menuItem.toLowerCase().replace(/\s+/g, "-")}`}>
-                                        {menuItem}
-                                      </NavLink>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            );
-                          })}
+            </div>
+
+            <ul
+              className={`flex flex-col md:flex-row md:items-center gap-4 uppercase text-sm font-bold 
+  ${mobileMenuOpen ? 'flex' : 'hidden'} md:flex px-4`}
+            >
+              {/* Logo */}
+              <li className="flex justify-center md:justify-start w-full md:w-auto">
+                <NavLink to={'/'}>
+                  <img
+                    className='w-32 md:w-24'
+                    src='https://images.indianexpress.com/2021/01/myntra.png'
+                    alt='Myntra logo'
+                  />
+                </NavLink>
+              </li>
+
+              {/* Main Menu */}
+              {key.map((item, i) => (
+                <li
+                  key={i}
+                  className='relative group cursor-pointer'
+                  onMouseEnter={() => window.innerWidth >= 768 && setActiveMenu(item)}
+                  onMouseLeave={() => window.innerWidth >= 768 && setActiveMenu(null)}
+                  onClick={() =>
+                    window.innerWidth < 768 &&
+                    setActiveMenu((prev) => (prev === item ? null : item))
+                  }
+                >
+                  <NavLink to={`/${item.toLowerCase()}`}>
+                    <p className="flex items-center justify-between md:justify-center px-2 md:px-4 py-2">
+                      {item}
+                      <sup className='text-red-500 ml-1'>
+                        {data.menus[item][0].sup}
+                      </sup>
+                    </p>
+                  </NavLink>
+
+                  {/* Dropdown */}
+                  {activeMenu === item && (
+                    <div
+                      className={`${window.innerWidth >= 768
+                          ? "absolute top-full left-0  w-[900px] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+                          : "grid grid-cols-1"
+                        } bg-white shadow-lg p-4 z-50 gap-4`}
+                    >
+                      {data.menus[item].map((subItem, index) => (
+                        <div key={index}>
+                          <h3 className="text-red-500 font-semibold mb-1">{subItem.category}</h3>
+                          <ul className="text-sm space-y-1">
+                            {subItem.items.map((menuItem, i) => (
+                              <li key={i} className="hover:text-pink-600">
+                                <NavLink
+                                  to={`/${item.toLowerCase()}/${menuItem.toLowerCase().replace(/\s+/g, "-")}`}
+                                >
+                                  {menuItem}
+                                </NavLink>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                      )}
-                    </li>
-                  )
-                })
-              }
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
             </ul>
 
-            <div className='relative'>
+
+            <div className='hidden md:flex relative'>
               <input
                 placeholder='Search for products, brands and more'
-                className='w-[400px] h-[40px] rounded-md p-[8px_45px_10px] outline-none bg-[#f5f5f6] '
+                className='w-full sm:w-[300px] md:w-[400px] h-[40px] rounded-md p-[8px_45px_10px] outline-none bg-[#f5f5f6]'
                 type="text" />
               <button className='absolute bg-[#f5f5f6] w-[40px] h-[40px] rounded-l-md p-[8px_10px_10px] left-0 border-r-1 border-[#e0e0e0]'>
                 <IoIosSearch />
               </button>
             </div>
 
-            <div className="flex items-center justify-center text-center gap-6">
+            <div className="flex items-center justify-center text-center gap-4 md:gap-6">
               {links.map((link, index) => (
                 <div
                   key={index}
@@ -158,7 +198,7 @@ const Header = () => {
                         >
                           {subItem.text}
                         </NavLink>
-                      ))}            
+                      ))}
                     </div>
 
                   )}
@@ -169,6 +209,18 @@ const Header = () => {
           </div>
 
         </nav>
+
+
+        {/* for mobile devices */}
+        <div className='md:hidden relative w-[450px] mb-2'>
+          <input
+            placeholder='Search for products, brands and more'
+            className='w-full sm:w-[300px] md:w-[400px] h-[40px] rounded-md p-[8px_45px_10px] outline-none bg-[#f5f5f6] text-black'
+            type="text" />
+          <button className='absolute bg-[#f5f5f6] w-[40px] h-[40px] rounded-l-md p-[8px_10px_10px] left-0 border-r-1 border-[#e0e0e0] text-black'>
+            <IoIosSearch />
+          </button>
+        </div>
       </header>
     </>
   )

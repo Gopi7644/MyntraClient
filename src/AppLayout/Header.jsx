@@ -14,11 +14,11 @@ const links = [
     name: "Profile",
     url: "/login",
     submenu: true,
-    submenu: [
-      { name: "My Account", url: "/profile/account" },
-      { name: "Orders", url: "/profile/orders" },
-      { name: "Settings", url: "/profile/settings" }
-    ]
+    // submenu: [
+    //   { name: "My Account", url: "/profile/account" },
+    //   { name: "Orders", url: "/profile/orders" },
+    //   { name: "Settings", url: "/profile/settings" }
+    // ]
   },
   {
     id: "b",
